@@ -1,0 +1,85 @@
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header ">
+          <div class="modal-title" id="exampleModalLabel"><h5>Q. {{ thread.question }}</h5> <p class="text-muted small mt-1 fst-italic">Thread by  &nbsp;·&nbsp; {{ thread.questionByUser }}</p></div>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+            <!-- <div class="container-sm row py-10 mx-1 pt-4 shadow p-3 mb-5  rounded"  style="height: auto;" > -->
+                
+                <div class="container">
+                    <div  class="row" *ngIf="replies === 0">
+                        
+                        <div class="col-5"></div>
+                        <div class="col-3">
+                            <img src="../../assets/icons/box.png" class="my-2" height="150rem" width="150rem" >
+                            <h3 class="text-muted ">No Replies yet !</h3>
+                        </div>
+                        <div class="col-5"></div>
+                    </div>
+                <!-- </div> -->
+                    <div *ngIf="replies !== 0">
+                        <div class="row" *ngFor="let answer of answers">
+                           <div class="row">
+                            <div class="col">
+                                <div class="row text-center">
+                                    <i  class='fa fa-caret-up' aria-hidden="true" role="button" tabindex="0"  style='font-size:40px;color:rgb(102, 106, 109)' (click)="upvoteClicked(answer.id)"></i>
+                                </div>
+                                <div class="row " style="padding-top: 10px;">
+                                    <p style="font-size: 20px;" class="text-center">{{ votes(answer) }}</p>
+                                </div>
+                                <div class="row text-center">
+                                    <i class="fa fa-caret-down" aria-hidden="true" role="button" tabindex="0"  style='font-size:40px;color:rgb(102, 106, 109)' (click)="downvoteClicked(answer.id)"></i>
+                                </div>
+
+                            </div>
+                            <div class="col-11 reply-background rounded">
+                                <p class="fst-italic">{{ answer.answer }}</p>
+                                
+                                  
+                            </div>
+                            <br>
+                            <div class="row pt-2">
+                                <div class="col"></div>
+                                <div class="col"></div>
+                                <div class="col d-flex justify-content-end">
+                                  <div class="row">
+                                      <!-- ------------ -->
+                                    <div class="card p-3 mb-2">
+                                        <div class="d-flex justify-content-end">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="icon"> <img src="../../assets/icons/username.png" height="30rem" width="30rem" alt=""> </div>
+                                                <div class="ms-2 c-details">
+                                                    <h6 class="mb-0 text-muted"> {{ answer.username }}</h6> <span>answered {{ answer.answeredDate }}</span>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="badge"> <span>Design</span> </div> -->
+                                        </div>
+                                       
+                                    </div>
+                                    <!-- ----------------------------- -->
+        
+                                  </div>
+                                  
+                                  
+                                </div>
+                              </div>
+                           </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <div class="input-group">
+                <span class="input-group-text">Comment</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img src="../../assets/icons/send(1).png" height="30rem" width="30rem"></button>
+              </div>
+          
+        </div>
+      </div>
+</div>
+

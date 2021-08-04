@@ -1,0 +1,23 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create new group</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" placeholder="Group name" aria-label="Username" aria-describedby="addon-wrapping" [(ngModel)]="groupName" name="groupName">
+              </div>
+              <br>
+          <div class="mb-3">
+            <textarea class="form-control" id="message-text" placeholder="Group Description ... " [(ngModel)]="groupDescription" name="groupDescription"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="createGroup()" data-bs-dismiss="modal">Create</button>
+      </div>
+    </div>
+  </div>

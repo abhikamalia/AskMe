@@ -1,0 +1,42 @@
+<div>
+    <br /><br />
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping"
+        ><img src="../../assets/icons/username.png" alt="" width="15" height="15"
+      /></span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Username"
+        aria-label="Username"
+        aria-describedby="addon-wrapping"
+        [(ngModel)]="email"
+        name="email"
+      />
+    </div>
+    <br /><br />
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping"
+        ><img src="../../assets/icons/key.png" alt="" width="15" height="15"
+      /></span>
+      <input
+        [type]="passwordType"
+        class="form-control"
+        placeholder="Password"
+        aria-label="Password"
+        aria-describedby="addon-wrapping"
+        [(ngModel)]="password"
+        name="password"
+      />
+      <a (click)="changePasswordType()"
+        ><img src="../../assets/icons/hidden.png" *ngIf="passwordType === 'password'" alt="" width="25" height="25"
+      />
+      <img src="../../assets/icons/eye(2).png" *ngIf="passwordType === 'text'" alt="" width="25" height="25"
+      /></a>
+    </div>
+    <br /><br />
+    <div class="input-group flex-nowrap justify-content-center">
+      <button type="button" class="btn btn-outline-success" (click)="login()">Login</button>
+    </div>
+  </div>
+  

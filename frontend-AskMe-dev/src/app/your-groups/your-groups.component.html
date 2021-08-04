@@ -1,0 +1,46 @@
+<div class="container-fluid mt-100">
+    <div class="d-flex flex-wrap justify-content-between">
+        
+        <div> <button type="button" class="btn btn-shadow btn-wide btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" > <span class="btn-icon-wrapper pr-2 opacity-7"> <i class="fa fa-plus fa-w-20"></i> </span> Create new Group </button> </div>
+        <div class="col-12 col-md-3 p-0 mb-3"> <input type="text" class="form-control" placeholder="Search..."> </div>
+        <!-- modal start -->
+          
+          <!-- Modal -->
+          <div  class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <app-create-group></app-create-group>
+          </div>
+        <!-- modal end -->
+    </div>
+    <br>
+    <div class="card mb-3">
+        <div class="card-header pl-0 pr-0">
+            <div class="row no-gutters w-100 align-items-center">
+                <div class="col ml-3">Group</div>
+                <div class="col-4 text-muted">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-4">Members</div>
+                        <div class="col-8">Threads</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body py-3">
+            <div class="row no-gutters align-items-center mt-4" *ngFor="let group of groupData">
+                <div class="col"> <a href="javascript:void(0)" class="text-big" data-abc="true" [routerLink]="['/groups' , group.name]">{{ group.name }}</a>
+                    <div class="text-muted small mt-1">{{ group.description }} &nbsp;·&nbsp; <a href="javascript:void(0)" class="text-muted" data-abc="true"></a></div>
+                </div>
+                <div class="d-none d-md-block col-4">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-4">{{ getGroupMembersLength(group) }}</div>
+                        <div class="col-4">{{ getGroupMembersLength(group) }}</div>
+                    </div>
+                </div>
+                <hr class="m-0">
+            </div>
+        </div>
+        <hr class="m-0">
+        
+    </div>
+</div>
+
+

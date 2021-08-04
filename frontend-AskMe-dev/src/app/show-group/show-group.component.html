@@ -1,0 +1,62 @@
+<div class="container  mt-100 ">
+    <div class="container-sm row py-10 mx-1 pt-4 shadow p-3 mb-5  text-white rounded headingColor"  style="height: 10rem;" >
+   
+        <h1 class="text-muted fst-italic">{{ groupName }}</h1>
+        <p class=" fst-italic">{{ groupData.description }}</p>
+        
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-between">
+        
+        <div> <button type="button" class="btn btn-shadow btn-wide btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="changeValueOfThreadInGroup()"> <span class="btn-icon-wrapper pr-2 opacity-7"> <i class="fa fa-plus fa-w-20"></i> </span> Create new Thread </button> </div>
+        <div class="col-12 col-md-3 p-0 mb-3"> <input type="text" class="form-control" placeholder="Search..."> </div>
+        <!-- modal start -->
+          
+          <!-- Modal -->
+          <div  class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <app-new-thread [groupName]="groupName" ></app-new-thread>
+          </div>
+        <!-- modal end -->
+    </div>
+    <br>
+    <div class="card mb-3">
+        <div class="card-header pl-0 pr-0">
+            <div class="row no-gutters w-100 align-items-center">
+                <div class="col ml-3 fst-italic text-muted">Threads</div>
+                <div class="col-8 text-muted">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-4 fst-italic">Replies</div>
+                        <div class="col-4 fst-italic">last Replied</div>
+                        <div class="col-4 fst-italic">Date</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body py-3">
+            
+            <div class="row no-gutters align-items-center mt-4" *ngFor="let thread of threadData">
+                <div class="col"> <a role="button" tabindex="0" class="text-big" data-abc="true" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="threadOpen(thread , getAnswerLength(thread))">{{ thread.question }}</a>
+                    <div class="text-muted small mt-1 fst-italic">Thread by &nbsp;·&nbsp; <a href="javascript:void(0)" class="text-muted" data-abc="true">{{ thread.questionByUser }}</a></div>
+                </div>
+                <div  class="modal fade " id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                    <!-- <app-show-thread [thread]="thread" [replies]="getAnswerLength(thread)"></app-show-thread> -->
+                    <app-show-thread></app-show-thread>
+                  </div>
+                <div class="d-none d-md-block col-8">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-4 text-muted">{{ getAnswerLength(thread) }}</div>
+                        <div class="col-4 text-muted">{{ getThreadLatestReplyDate(thread) }}</div>
+                        <div class="col-4 text-muted">{{ thread.date }}</div>
+                    </div>
+                </div>
+                <hr class="m-1">
+            </div>
+            
+            <br>
+        </div>
+        <hr class="m-0">
+        
+    </div>
+</div>
+
+
